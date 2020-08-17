@@ -38,7 +38,7 @@ public class RESTController {
 //        };
 //    }
    public List<Object> getAllArticles(){
-       Object[] articles = restTemplate.getForObject(url, Object[].class);
+       Object articles = restTemplate.getForObject(url, Object.class);
        return Arrays.asList(articles);
    }
 
