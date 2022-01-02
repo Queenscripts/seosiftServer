@@ -20,101 +20,101 @@ import org.springframework.web.client.RestTemplate;
 
 
 @RestController
-@RequestMapping(value = "/demo", method = RequestMethod.GET, produces = "application/json")
-@ResponseBody
-public class RESTController {
-    private static final Logger log = LoggerFactory.getLogger(SeoApplication.class);
+    // @RequestMapping(value = "/demo", method = RequestMethod.GET, produces = "application/json")
+    // @ResponseBody
+    public class RESTController {
+        private static final Logger log = LoggerFactory.getLogger(SeoApplication.class);
 
-    @Autowired
-    private RestTemplate restTemplate;
-    private static String url = "https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10";
+        @Autowired
+        private RestTemplate restTemplate;
+        private static String url = "https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10";
 
-   @GetMapping("/api")
-//    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-//        return args -> {
-//            Article articlesArticle = restTemplate.getForObject(
-//                    "https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", Article.class);
-//            log.info(articlesArticle.toString());
-//        };
-//    }
-   public List<Object> getAllArticles(){
-       Object articles = restTemplate.getForObject(url, Object.class);
-       return Arrays.asList(articles);
-   }
+    @GetMapping("/api")
+    //    public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+    //        return args -> {
+    //            Article articlesArticle = restTemplate.getForObject(
+    //                    "https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", Article.class);
+    //            log.info(articlesArticle.toString());
+    //        };
+    //    }
+    public List<Object> getAllArticles(){
+        Object articles = restTemplate.getForObject(url, Object.class);
+        return Arrays.asList(articles);
+    }
 
-//    public String getProductList() {
-//       HttpHeaders headers = new HttpHeaders();
-//       headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-//       HttpEntity <String> entity = new HttpEntity<String>(headers);
-      
-//       return restTemplate.exchange("https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", HttpMethod.GET, entity, String.class).getBody();
-//    }
-
-
-public static void main(String[] args) {
-    SpringApplication.run(SeoApplication.class, args);
-}
-
-}
+    //    public String getProductList() {
+    //       HttpHeaders headers = new HttpHeaders();
+    //       headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+    //       HttpEntity <String> entity = new HttpEntity<String>(headers);
+        
+    //       return restTemplate.exchange("https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", HttpMethod.GET, entity, String.class).getBody();
+    //    }
 
 
-// @SpringBootApplication
-// public class RESTController {
-    // private final ArticleService ArticleService;
+    public static void main(String[] args) {
+        SpringApplication.run(SeoApplication.class, args);
+    }
 
-    // @Autowired
-    // RestTemplate restTemplate;
+    }
 
-    // @RequestMapping("/api")
 
-    // @PostMapping
-    // public void addArticle(@RequestBody Article Article){
-    //     ArticleService.addArticle(Article);
-    // }
+    // @SpringBootApplication
+    // public class RESTController {
+        // private final ArticleService ArticleService;
 
-    // private Object log;
+        // @Autowired
+        // RestTemplate restTemplate;
 
-	// @Bean
-    // public RestTemplate restTemplate(RestTemplateBuilder builder) {
-	// 	return builder.build();
-	// }
+        // @RequestMapping("/api")
 
-    // @Bean
-	// public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
-	// 	return args -> {
-	// 		Quote article = restTemplate.getForObject(
-	// 				"https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", Quote.class);
-	// 		log.info(article.toString());
-	// 	};
-	// }
-    // @RequestMapping(value = "/api")
-    // public String getAllArticles() {
-    //     HttpHeaders headers = new HttpHeaders();
-    //     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
-    //     HttpEntity<String> entity = new HttpEntity<String>(headers);
-    //     return restTemplate.exchange(
-    //         "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", HttpMethod.GET, entity, String.class).getBody();
-    //   };
-        // final String uri = "";
-        // RestTemplate restTemplate = new RestTemplate();
-        // String result = restTemplate.getForObject(uri, String.class);
-        // System.out.println(result);
-    
+        // @PostMapping
+        // public void addArticle(@RequestBody Article Article){
+        //     ArticleService.addArticle(Article);
+        // }
 
-    // return new Article();
-    // @GetMapping(path = "{id}")
-    // public Article getArticleById(@PathVariable("id") UUID id){
-    //     return ArticleService.getArticleById(id)
-    //             .orElse(null);
-    // }
+        // private Object log;
 
-    // @DeleteMapping(path ="{id}")
-    // public void deleteArticleById(@PathVariable("id") UUID id){
-    //     ArticleService.deleteArticle(id);
-    // }
+        // @Bean
+        // public RestTemplate restTemplate(RestTemplateBuilder builder) {
+        // 	return builder.build();
+        // }
 
-    // @PutMapping
-    // public void updateArticle(@PathVariable("id") UUID id, @RequestBody Article ArticleToUpdate){
-    //     ArticleService.updateArticle(id, ArticleToUpdate);
-    // }
-    // }
+        // @Bean
+        // public CommandLineRunner run(RestTemplate restTemplate) throws Exception {
+        // 	return args -> {
+        // 		Quote article = restTemplate.getForObject(
+        // 				"https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", Quote.class);
+        // 		log.info(article.toString());
+        // 	};
+        // }
+        // @RequestMapping(value = "/api")
+        // public String getAllArticles() {
+        //     HttpHeaders headers = new HttpHeaders();
+        //     headers.setAccept(Arrays.asList(MediaType.APPLICATION_JSON));
+        //     HttpEntity<String> entity = new HttpEntity<String>(headers);
+        //     return restTemplate.exchange(
+        //         "https://cors-anywhere.herokuapp.com/https://newsapi.org/v2/everything?q=('+search%20+engine%20+optimization' OR '+SEO')&sortBy=publishedAt&language=en&apiKey=f5ae70fe95da4ca892c7027bd1ee6b10", HttpMethod.GET, entity, String.class).getBody();
+        //   };
+            // final String uri = "";
+            // RestTemplate restTemplate = new RestTemplate();
+            // String result = restTemplate.getForObject(uri, String.class);
+            // System.out.println(result);
+        
+
+        // return new Article();
+        // @GetMapping(path = "{id}")
+        // public Article getArticleById(@PathVariable("id") UUID id){
+        //     return ArticleService.getArticleById(id)
+        //             .orElse(null);
+        // }
+
+        // @DeleteMapping(path ="{id}")
+        // public void deleteArticleById(@PathVariable("id") UUID id){
+        //     ArticleService.deleteArticle(id);
+        // }
+
+        // @PutMapping
+        // public void updateArticle(@PathVariable("id") UUID id, @RequestBody Article ArticleToUpdate){
+        //     ArticleService.updateArticle(id, ArticleToUpdate);
+        // }
+        // }
